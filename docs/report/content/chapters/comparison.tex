@@ -1,0 +1,23 @@
+%%
+%% /docs/report/content/chapters/comparison.tex
+%%
+%% Created by Paul Warkentin <paul@warkentin.email> on 24/07/2018.
+%% Updated by Paul Warkentin <paul@warkentin.email> on 25/07/2018.
+%%
+
+\section{Comparison}
+\label{section:comparison}
+
+Next to the SSD network are many other object detection algorithms published. In this section, we will take a look at two other networks.
+
+\subsection{Faster R-CNN}
+
+Faster R-CNN \cite{fasterrcnn2015} is a faster version of the Region-based Convolutional Neural Network (in short R-CNN). R-CNN uses an algorithm called Selective Search to propose objects and reduces the number of region proposals to around 2000. For each regional proposal, CNN features are calculated and finally classified. Faster R-CNN replaces that Selective Search with a convolutional network as the Selective Search is very slow. The new convolutional network is called Region Proposal Network (in short RPN) that generates regions of interests. \\
+
+With Faster R-CNN, the idea of anchor boxes comes to life. For each location in a feature map extracted by convolutional layers from the image, anchor boxes with 3 different scales and 3 different aspect ratios are computed, resulting in 9 anchor boxes per location. A sliding window is then run spatially on these feature maps which are then fed to another network for classification and regression. The regression network predicts a bounding box, the classification network outputs a probability indicating whether the predicted box contains an object or background.
+
+\subsection{YOLO}
+
+You Ony Look Once (in short YOLO) \cite{yolo2016} is a Regression-based object detector. We will look into YOLOv2 here. \\
+
+YOLO takes an image of size $448 \times 448$ as input and feeds it to a convolutional neural network with a tensor of $(7, 7, 1024)$ as output. This tensor is then fed into two fully connected layers that performs linear regression. The final output is then a tensor of size $(7, 7, 30)$ . Each cell in the $7 \times 7$ grid predicts two bounding boxes and its confidence scores. The score measures how accurate the bounding box is and how likely the box contains an object or background.

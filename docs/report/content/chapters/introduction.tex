@@ -1,0 +1,20 @@
+%%
+%% /docs/report/content/chapters/introduction.tex
+%%
+%% Created by Paul Warkentin <paul@warkentin.email> on 21/07/2018.
+%% Updated by Paul Warkentin <paul@warkentin.email> on 25/07/2018.
+%%
+
+\section{Introduction}
+\label{section:introduction}
+
+Object detection has become more important over the last few years. The analysis of street scenes for autonomous driving or the counting of people at an event are just a few of many applications. By now, there are many different algorithms and concepts for object detection published. Just a few are lightweight enough to run them on live inference that results in an appropriate frame rate. Other object detection networks are for example the You Only Look Once (in short: YOLO) network or the Faster R-CNN \cite{fasterrcnn2015} network. Both models are discussed in Section \ref{section:comparison} as comparison to the implementation of this project. \\
+
+We discuss the Single Shot MultiBox Detector (in short: SSD) \cite{ssd2016} in this project as it is more efficient on live inference while improving the accuracy at the time compared to other object detection models like Faster R-CNN and YOLO. Let us take a look at the components in the name.
+\begin{itemize}
+  \item \textbf{Single Shot:} this means that the tasks of object classification and localization are done in a single forward pass of the network.
+  \item \textbf{MultiBox:} this is the name of a technique for bounding box regression developed by \textit{Szegedy et al.} \cite{multibox2014}.
+  \item \textbf{Detector:} the network is an object detector that also classifies those detected objects.
+\end{itemize}
+
+First, we will discuss the implementation of the model for image inputs of size $300 \times 300$ and $512 \times 512$. After that, the already mentioned algorithms YOLO and Faster R-CNN are shortly described before we will take a look at some results given by the trained network of this project.
